@@ -19,10 +19,19 @@ import { fetchEmployeeData } from '../store/EmployeeSlice';
 import { AppDispatch, RootState } from '../store/store';
 import { Employee } from '../interfaces/EmployeeInterface';
 import EmployeeRow from './Employee';
+import EmployeeDetailsModal from './EmployeeDetailsModal';
 
 const Employees: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
   const { employees, status, error } = useSelector((state: RootState) => state.employees);
+
+  const [selectedEmployee, setSelectedEmployee] = useState<Employee | null>(null);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleEmployeeClick = (employee: Employee) => {
+    setSelectedEmployee(employee);
+    setModalOpen(true);
+  };
 
   const [searchQuery, setSearchQuery] = useState('');
   const [page, setPage] = useState(1);
@@ -128,7 +137,7 @@ const Employees: React.FC = () => {
           </TableHead>
           <TableBody>
           {displayedEmployees.map((employee) => (
-                <EmployeeRow key={employee.id} employee={employee} />
+                <EmployeeRow key={employee.id} employee={employee}  onClick={() => handleEmployeeClick(employee)} />
             ))}
           </TableBody>
         </Table>
@@ -141,6 +150,7 @@ const Employees: React.FC = () => {
           shape="rounded"
         />
       </Box>
+      <EmployeeDetailsModal modalOpen={modalOpen} handleModalClose={() => setModalOpen(false)} selectedEmployee={selectedEmployee} />
     </>
   );
 };

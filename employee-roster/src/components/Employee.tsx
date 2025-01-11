@@ -4,11 +4,12 @@ import { Employee } from '../interfaces/EmployeeInterface';
 
 interface EmployeeRowProps {
   employee: Employee;
+  onClick: () => void;
 }
 
-const EmployeeRow: React.FC<EmployeeRowProps> = ({ employee }) => {
+const EmployeeRow: React.FC<EmployeeRowProps> = ({ employee, onClick }) => {
   return (
-    <TableRow>
+    <TableRow onClick={onClick} style={{ cursor: 'pointer' }}>
       <TableCell>{employee.id}</TableCell>
       <TableCell>
         <Box display="flex" alignItems="center">
