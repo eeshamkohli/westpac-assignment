@@ -152,7 +152,7 @@ const Employees: React.FC = () => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Box display="flex" justifyContent="center" mt={3}>
+      <Box display="flex" justifyContent="end" mt={3}>
         <Pagination
           count={Math.ceil(filteredEmployees.length / employeesPerPage)}
           page={page}
