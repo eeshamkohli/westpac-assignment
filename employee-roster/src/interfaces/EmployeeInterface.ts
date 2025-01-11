@@ -11,11 +11,13 @@ export interface Employee {
     dateJoined: string;
   }
 
+export interface CompanyInfo {
+    companyName: string;
+    companyMotto: string;
+    companyEst: string;
+}
+
 export interface Company {
-    companyInfo: {
-        companyName: string;
-        companyMotto: string;
-        companyEst: string;
-    };
+    companyInfo: CompanyInfo
     employees: Employee[];
 }
