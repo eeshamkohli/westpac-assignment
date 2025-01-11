@@ -14,7 +14,10 @@ import {
   Paper,
   TextField,
   Pagination,
+  InputAdornment,
+  
 } from '@mui/material';
+import SearchIcon from "@mui/icons-material/Search";
 import { fetchEmployeeData } from '../store/EmployeeSlice';
 import { AppDispatch, RootState } from '../store/store';
 import { Employee } from '../interfaces/EmployeeInterface';
@@ -82,7 +85,7 @@ const Employees: React.FC = () => {
 
   return (
  
-    <>
+    <Box sx={{border:"1px solid lightgrey", p:2}}>
       <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
         <Typography>
           Showing {displayedEmployees.length} of {filteredEmployees.length}
@@ -91,10 +94,17 @@ const Employees: React.FC = () => {
           <TextField
             size="small"
             variant="outlined"
-            placeholder="Search by Name, Contact No, or Address"
+            placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             sx={{ marginRight: 2 }}
+            InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
           />
           <Button variant="contained">Search</Button>
         </Box>
@@ -151,7 +161,7 @@ const Employees: React.FC = () => {
         />
       </Box>
       <EmployeeDetailsModal modalOpen={modalOpen} handleModalClose={() => setModalOpen(false)} selectedEmployee={selectedEmployee} />
-    </>
+    </Box>
   );
 };
 

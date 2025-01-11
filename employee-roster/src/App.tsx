@@ -9,13 +9,13 @@ function App() {
 
   return (
     <Provider store={store}>
-    <div>
+    <Box border={"1px solid lightgrey"}>
     <Box sx={{ padding: 3 }}>
      <CompanyInfo />
 
       <EmployeeList />
       </Box>
-    </div>
+    </Box>
   </Provider>
   )
 }

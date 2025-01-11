@@ -12,7 +12,10 @@ const styles={
         boxShadow: 24,
         p: 4,
         borderRadius: 2,
-      }
+      },
+    avatar:{ width: 100, height: 100 },
+    bio: { marginTop: 2 },
+    job: { marginBottom: 1 }
 }
 
 type EmployeeDetailsModalProps = {
@@ -33,7 +36,7 @@ const EmployeeDetailsModal: React.FC<EmployeeDetailsModalProps> = ({modalOpen,ha
           <Avatar
             src={selectedEmployee.avatar}
             alt={`${selectedEmployee.firstName} ${selectedEmployee.lastName}`}
-            sx={{ width: 100, height: 100 }}
+            sx={styles.avatar}
           />
           <Stack alignItems="center" justifyContent={"center"}>
             <Typography variant="body2" color="textSecondary">
@@ -48,11 +51,11 @@ const EmployeeDetailsModal: React.FC<EmployeeDetailsModalProps> = ({modalOpen,ha
           <Typography variant="h6" fontWeight="bold">
             {`${selectedEmployee.firstName} ${selectedEmployee.lastName}`}
           </Typography>
-          <Typography variant="body2" color="textSecondary" sx={{ marginBottom: 1 }}>
+          <Typography variant="body2" color="textSecondary" sx={styles.job}>
             {selectedEmployee.jobTitle}
           </Typography>
       
-          <Typography variant="body2" sx={{ marginTop: 2 }}>
+          <Typography variant="body2" sx={styles.bio}>
             {selectedEmployee.bio}
           </Typography>
         </Box>
